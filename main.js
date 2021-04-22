@@ -2,6 +2,28 @@ var app = new Vue({
     el:'#app',
     data:{
         saludo:'Hello world from Vuejs',
-        fruits:['apple','banana','orange']
+        fruits:[
+            {
+            'name':'apple',
+            'cantidad':10
+            },
+            {
+            'name':'banana',
+            'cantidad':3
+            },
+            {
+            'name':'orange',
+            'cantidad':0
+            }
+        ],
+        newFruit:''
+    },
+    methods:{
+        addFruit(){
+            this.fruits.push({
+                name:this.newFruit,
+                cantidad:0
+            })
+        }
     }
 })
