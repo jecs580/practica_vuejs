@@ -16,14 +16,28 @@ var app = new Vue({
             'cantidad':0
             }
         ],
-        newFruit:''
+        newFruit:'',
+        total:0
     },
     methods:{
         addFruit(){
-            this.fruits.push({
-                name:this.newFruit,
-                cantidad:0
-            })
+            if(this.newFruit!=''){
+                this.fruits.push({
+                    name:this.newFruit,
+                    cantidad:0
+                })
+                this.newFruit='';
+            }
+        }
+    },
+    computed:{
+        // Ejecuta una funcion cada vez q cambien los datos que esta dentro de su funcion
+        sumarFruit(){
+            this.total=0;
+            for (const fruit of this.fruits) {
+                this.total+=fruit.cantidad;
+            }
+            return this.total;
         }
     }
 })
