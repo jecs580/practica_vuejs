@@ -1,10 +1,14 @@
 Vue.component('titulo',{
     template:`
       <div>
-        <h1>numero {{$store.state.numero}}</h1>
+        <h1>numero {{numero}}</h1>
         <hijo></hijo>
       </div>
-    `
+    `,
+    computed:{
+        ...Vuex.mapState(['numero'])
+        
+    }
 });
 Vue.component('hijo',{
     template:`
