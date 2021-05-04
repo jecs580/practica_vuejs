@@ -7,16 +7,22 @@ Vue.component('titulo',{
     `,
     computed:{
         ...Vuex.mapState(['numero'])
-        
     }
 });
 Vue.component('hijo',{
     template:`
     <div>
-        <h1>numero {{$store.state.numero}}</h1>
-        <button @click="$store.commit('add')">+</button>
+        <h1>numero {{numero}}</h1>
+        <button @click="add">+</button>
+        <button @click="subtract(2)">-</button>
   </div>
-    `
+    `,
+    computed:{
+        ...Vuex.mapState(['numero'])
+    },
+    methods:{
+        ...Vuex.mapMutations(['add','subtract'])
+    }
 });
 const store = new Vuex.Store({
     state:{
@@ -25,6 +31,9 @@ const store = new Vuex.Store({
     mutations:{
         add(state){
             state.numero++;
+        },
+        subtract(state,n){
+            state.numero-=n;
         }
     }
 });
